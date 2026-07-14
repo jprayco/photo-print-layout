@@ -1,0 +1,57 @@
+@page {
+  size: A4;
+  margin: 20mm;
+}
+
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 3mm;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.img-preview {
+  width: 15rem;
+  height: 15rem;
+  object-fit: contain;
+}
+
+.img-box {
+  display: inline-block;
+  border: 1px dotted #dadada;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+}
+
+.img-1 {
+  width: 1in;
+  height: 1in;
+}
+.img-2 {
+  width: 2in;
+  height: 2in;
+}
+.img-passport {
+  width: 1.4in;
+  height: 1.8in;
+}
+.img-wallet {
+  width: 2.5in;
+  height: 3.5in;
+}
+.img-4r {
+  width: 4in;
+  height: 6in;
+}
+.img-5r {
+  width: 5in;
+  height: 7in;
+}

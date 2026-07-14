@@ -1,0 +1,112 @@
+<div class="p-3">
+  <h4>Photo Printing</h4>
+  <div class="row m-0 p-0">
+    <div class="col-md-4 col-sm-12 col-12">
+      <div class="p-3">
+        <div class="bg-white p-3">
+          <div><input type="file" class="form-control" (change)="onFilesSelected($event)" /></div>
+          <div class="mt-3">
+            <img src="{{ img().url }}" alt="{{ img().name }}" class="img-preview" />
+          </div>
+          <div class="mt-3">
+            <div>Select sizes</div>
+            <div>
+              <input
+                type="checkbox"
+                name="1x1"
+                (change)="isSelected1x1.set($event.target.checked)"
+              />
+              <label for="1x1" class="mx-1">1x1</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                name="2x2"
+                (change)="isSelected2x2.set($event.target.checked)"
+              />
+              <label for="2x2" class="mx-1">2x2</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                name="passport"
+                (change)="isSelectedPassport.set($event.target.checked)"
+              />
+              <label for="passport" class="mx-1">Passport size</label>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                name="wallet"
+                (change)="isSelectedWallet.set($event.target.checked)"
+              />
+              <label for="wallet" class="mx-1">Wallet size</label>
+            </div>
+            <div>
+              <input type="checkbox" name="4r" (change)="isSelected4r.set($event.target.checked)" />
+              <label for="4r" class="mx-1">4r</label>
+            </div>
+            <div>
+              <input type="checkbox" name="5r" (change)="isSelected5r.set($event.target.checked)" />
+              <label for="5r" class="mx-1">5r</label>
+            </div>
+            <div>
+              <button
+                type="button"
+                class="btn btn-primary mt-3"
+                (click)="downloadAsPdf()"
+                [disabled]="isDownloading()"
+              >
+                {{ isDownloading() ? 'Generating PDF...' : 'Download as PDF' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 col-sm-12 col-12">
+      <div class="d-flex justify-content-center p-3">
+        <div class="page" #pageRef>
+          @if (isSelected1x1()) {
+            <div>
+              @for (i of [1, 2, 3, 4, 5, 6, 7, 8]; track i) {
+                <div class="img-box img-1"><img [src]="img().url" [alt]="img().name" /></div>
+              }
+            </div>
+          }
+          @if (isSelected2x2()) {
+            <div>
+              @for (i of [1, 2, 3, 4]; track i) {
+                <div class="img-box img-2"><img [src]="img().url" [alt]="img().name" /></div>
+              }
+            </div>
+          }
+          @if (isSelectedPassport()) {
+            <div>
+              @for (i of [1, 2, 3, 4, 5]; track i) {
+                <div class="img-box img-passport"><img [src]="img().url" [alt]="img().name" /></div>
+              }
+            </div>
+          }
+          @if (isSelectedWallet()) {
+            <div>
+              @for (i of [1, 2, 3]; track i) {
+                <div class="img-box img-wallet"><img [src]="img().url" [alt]="img().name" /></div>
+              }
+            </div>
+          }
+          @if (isSelected4r()) {
+            <div>
+              @for (i of [1, 2]; track i) {
+                <div class="img-box img-4r"><img [src]="img().url" [alt]="img().name" /></div>
+              }
+            </div>
+          }
+          @if (isSelected5r()) {
+            <div class="img-box img-5r"><img [src]="img().url" [alt]="img().name" /></div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
